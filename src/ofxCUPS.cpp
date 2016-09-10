@@ -26,7 +26,7 @@ ofxCUPS::~ofxCUPS()
 
 
 #pragma mark -
-void ofxCUPS::listPrinters()
+void ofxCUPS::listPrinters() const
 {
     cout << "---------- installed printers ----------" << endl;
     int i;  
@@ -43,7 +43,7 @@ void ofxCUPS::listPrinters()
     cout << "----------------------------------------" << endl;
 }
 
-vector<string> ofxCUPS::getPrinterList()
+vector<string> ofxCUPS::getPrinterList() const
 {
     vector<string> printerList;
     int i;
@@ -66,7 +66,7 @@ vector<string> ofxCUPS::getPrinterList()
     return printerList;
 }
 
-string ofxCUPS::getDefaultPrinterName()
+string ofxCUPS::getDefaultPrinterName() const
 {
     /* This is bad according to CUPS API Reference
     const char* defaultPrinter = cupsGetDefault();
@@ -97,12 +97,12 @@ string ofxCUPS::getDefaultPrinterName()
     return defaultPrinterName;
 }
 
-void ofxCUPS::printImage(string filename)
+void ofxCUPS::printImage(string filename) const
 {
     printImage(filename, false);
 }
 
-void ofxCUPS::printImage(string filename, bool isAbsolutePath)
+void ofxCUPS::printImage(string filename, bool isAbsolutePath) const
 {
     string printFile;
     if(isAbsolutePath) {
@@ -136,12 +136,12 @@ void ofxCUPS::printImage(string filename, bool isAbsolutePath)
     }
 }
 
-void ofxCUPS::printImageWithDefaultOptions(string filename)
+void ofxCUPS::printImageWithDefaultOptions(string filename) const
 {
     printImageWithDefaultOptions(filename, false);
 }
 
-void ofxCUPS::printImageWithDefaultOptions(string filename, bool isAbsolutePath)
+void ofxCUPS::printImageWithDefaultOptions(string filename, bool isAbsolutePath) const
 {
     string printFile;
     if(isAbsolutePath) {
@@ -184,7 +184,7 @@ void ofxCUPS::printImageWithDefaultOptions(string filename, bool isAbsolutePath)
     cupsFreeDests(num_dests, dests);
 }
 
-void ofxCUPS::clearAllJobs()
+void ofxCUPS::clearAllJobs() const
 {
     cupsCancelJob2(CUPS_HTTP_DEFAULT, printerName.c_str(), CUPS_JOBID_ALL, 1);
 }
@@ -251,7 +251,7 @@ void ofxCUPS::parseOptions(string optionString)
 }
 
 
-void ofxCUPS::checkActiveJobStatus()
+void ofxCUPS::checkActiveJobStatus() const
 {  
     cups_job_t *jobs;  
     string info;
@@ -304,7 +304,7 @@ void ofxCUPS::setPrinterName(string newPrinterName)
 {
     printerName = newPrinterName;
 }
-string ofxCUPS::getPrinterName()
+string ofxCUPS::getPrinterName() const
 {
     return printerName;
 }
@@ -318,7 +318,7 @@ void ofxCUPS::setPrinterInfo(string newPrinterInfo)
     printerInfo = newPrinterInfo;
 }
 
-string ofxCUPS::getPrinterInfo()
+string ofxCUPS::getPrinterInfo() const
 {
     return printerInfo;
 }
@@ -332,7 +332,7 @@ void ofxCUPS::setPrinterState(int newPrinterState)
     printerState = newPrinterState;
 }
 
-int ofxCUPS::getPrinterState()
+int ofxCUPS::getPrinterState() const
 {
     return printerState;
 }

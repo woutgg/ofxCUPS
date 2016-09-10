@@ -12,23 +12,23 @@ public:
     ofxCUPS(string printerName);
     ~ofxCUPS();
     
-    void listPrinters();
-    vector<string> getPrinterList();
-    string getDefaultPrinterName();
-    void printImage(string filename);
-    void printImage(string filename, bool isAbsolutePath);
+    void listPrinters() const;
+    vector<string> getPrinterList() const;
+    string getDefaultPrinterName() const;
+    void printImage(string filename) const;
+    void printImage(string filename, bool isAbsolutePath) const;
     
     // Uses user defined default printer settings for printing the file
-    void printImageWithDefaultOptions(string filename);
-    void printImageWithDefaultOptions(string filename, bool isAbsolutePath);
+    void printImageWithDefaultOptions(string filename) const;
+    void printImageWithDefaultOptions(string filename, bool isAbsolutePath) const;
 
     void updatePrinterInfo();
-    void clearAllJobs();
-    void checkActiveJobStatus();
+    void clearAllJobs() const;
+    void checkActiveJobStatus() const;
     
-    int getPrinterState();
-    string getPrinterName();
-    string getPrinterInfo();
+    int getPrinterState() const;
+    string getPrinterName() const;
+    string getPrinterInfo() const;
     void setPrinterName(string newPrinterName);
     void setPrinterInfo(string newPrinterInfo);
     void setPrinterState(int newPrinterState);
